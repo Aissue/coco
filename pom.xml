@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.coco</groupId>
+    <artifactId>maven-springmvc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
+        <!-- JSON begin-->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ezmorph</groupId>
+            <artifactId>ezmorph</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+        <!-- JSON end -->
+
+
+    </dependencies>
+    <build>
+        <finalName>redwinehome</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.2.v20140723</version>
+                <configuration>
+                    <!-- 扫描秒数，若非0则为热部署-->
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <reload>automatic</reload>
+                    <stopPort>9966</stopPort>
+                    <stopKey>foo</stopKey>
+                    <stopWait>10</stopWait>
+                    <webApp>
+                        <!-- 项目根目录-->
+                        <contextPath>/</contextPath>
+                    </webApp>
+                    <httpConnector>
+                        <!-- 服务器端口号-->
+                        <port>9080</port>
+                        <idleTimeout>60000</idleTimeout>
+                    </httpConnector>
+                    <!-- 请求log-->
+                    <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
+                        <!-- log输出目录-->
+                        <filename>target/yyyy_mm_dd.request.log</filename>
+                        <!--<filenameDateformat>yyyy_MM_dd</filenameDateformat>-->
+                        <!-- log保存天数-->
+                        <retainDays>90</retainDays>
+                        <!-- log是否附加在文件后-->
+                        <append>true</append>
+                        <extended>false</extended>
+                        <!-- 时区-->
+                        <logTimeZone>GMT+8:00</logTimeZone>
+                    </requestLog>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
