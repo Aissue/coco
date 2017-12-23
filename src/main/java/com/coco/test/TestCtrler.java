@@ -13,7 +13,7 @@ public class TestCtrler {
 
     @RequestMapping(value = "index.do")
     public String index(){
-        return "index";
+        return "myThread";
     }
 
 }
